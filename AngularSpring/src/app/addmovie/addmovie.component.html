@@ -1,0 +1,29 @@
+<div>
+  <form [formGroup]="formControl" (ngSubmit)="onSubmit()">
+    <label for="field1">Movie Name:</label>
+    <input type="text" id="field1" [formControl]="formControl.controls['movieName']" [(ngModel)]="movieName" />
+    <br/>
+    <div *ngIf="formControl.controls.movieName.invalid">
+      Movie name should be only alphanumeric
+    </div>
+    <br/>
+    <label for="field2">Give Rating:</label>
+    <input type="text" id="field2" [formControl]="formControl.controls['movieRating']" [(ngModel)]="movieRating" />
+    <br/>
+    <div *ngIf="formControl.controls.movieRating.invalid">
+      Rating needs to be number eg: 2.5. Rating is on scale 1-5
+    </div>
+    <br/>
+    <label for="field3">Select Genre:</label>
+    <select id="field3" [formControl]="formControl.controls['movieGenre']" [(ngModel)]="movieGenre">
+      <option>--Select--</option>
+      <option>Drama</option>
+      <option>Fiction</option>
+      <option>Satire</option>
+    </select>
+    <div *ngIf="formControl.controls.movieGenre.invalid">
+      Select Genre!!
+    </div><br/>
+    <input type="submit" value="Add Movie" /> 
+  </form>
+</div>

@@ -1,0 +1,28 @@
+<div>
+  <form [formGroup]="formControl" (ngSubmit)="onSubmit()">
+    <label for="field3">Search Movie:</label>
+    <select id="field3" [formControl]="formControl.controls['movieGenre']" [(ngModel)]="movieGenre">
+      <option>--Select--</option>
+      <option>Drama</option>
+      <option>Fiction</option>
+      <option>Satire</option>
+    </select>
+    <div *ngIf="formControl.controls.movieGenre.invalid">
+      Select Genre!!
+    </div>
+    <input type="submit" value="Search Movie" />
+  </form>
+  <div *ngIf="movieList?.length > 0">
+      <hr>
+    <table>
+      <thead>
+        <th>Movie Name</th>
+        <th>Rating</th>
+      </thead>
+      <tr *ngFor="let m of movieList">
+        <td>{{ m.moviesName }}</td>
+        <td>{{ m.moviesRating }}</td>
+      </tr>
+    </table>
+  </div>
+</div>
